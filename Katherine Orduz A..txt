@@ -1,0 +1,108 @@
+Algoritmo CalcularNotasEstudiantes
+	Definir notas, notaIndividual,promedioGeneral, promediosPorEstudiante Como Real
+	Definir contadorNotas Como Entero
+	Definir nombres, nombreEstudiante, estudianteMenorPromedio,estudianteMayorPromedio  Como Caracter
+	Dimension  notas[5,5]
+	Dimension nombres[5]
+	Dimension promediosPorEstudiante[5]
+	
+	Para filas = 1 Hasta 5 Con Paso 1 Hacer
+		Escribir "Ingrese el nombre del estudiante"
+		Leer nombreEstudiante
+		nombres[filas] = nombreEstudiante
+		Para columnas = 1 Hasta 5 Con Paso 1 Hacer
+			// notaIndividual = azar(5) + 1
+			Repetir
+				Escribir "Ingrese la nota", contadorNotas, ": "
+				Leer notaIndividual
+				si notaIndividual >= 0 y notaIndividual <= 5
+					notas[filas, columnas] = notaIndividual
+					contadorNotas = contadorNotas + 1
+				FinSi
+			Hasta Que contadorNotas = 5
+		Fin Para
+		contadorNotas = 0
+	Fin Para
+	
+	promedioGeneral = calcularPromedioGeneral(notas)
+	
+	calcularPromedioGeneralPorRefencia(notas, promedioGeneral)
+	
+	calcularPromediosPorEstudiantes(notas, promediosPorEstudiante)
+	
+	estudianteMenorPromedio = identificarEstudianteMenorPromedio(promediosPorEstudiante, nombres)
+	
+	estudianteMayorPromedio = identificarEstudianteMayorPromedio(promediosPorEstudiante, nombres)
+	
+	
+FinAlgoritmo
+
+Funcion mostrarTodoElResultado(promedioGeneralGrupo, nombreEstudianteMayorNota, nombreEstudianteMenorNota)
+	Escribir ""
+FinFuncion
+
+
+Funcion nombreEstudianteMenorNota = identificarEstudianteMenorPromedio(promediosPorEstudiante, nombresDeEstudiante)
+	Definir notaMenor Como Real
+	
+	notaMenor = promediosPorEstudiante[1]
+	nombreEstudianteMenorNota = nombresDeEstudiante[1]
+	Para indice = 2 Hasta 5 Con Paso 1 Hacer
+		si promediosPorEstudiante[indice] < notaMenor Entonces
+			notaMenor = promediosPorEstudiante[indice]
+			nombreEstudianteMenorNota= nombresDeEstudiante[indice]
+		FinSi
+	Fin Para
+FinFuncion
+
+Funcion nombreEstudianteMayorNota = identificarEstudianteMayorPromedio(promediosPorEstudiante, nombresDeEstudiante)
+	Definir notaMayor Como Real
+	
+	notaMenor = promediosPorEstudiante[1]
+	nombreEstudianteMayorNota = nombresDeEstudiante[1]
+	Para indice = 2 Hasta 5 Con Paso 1 Hacer
+		si promediosPorEstudiante[indice] > notaMenor Entonces
+			notaMayor = promediosPorEstudiante[indice]
+			nombreEstudianteMayorNota= nombresDeEstudiante[indice]
+		FinSi
+	Fin Para
+FinFuncion
+
+
+Funcion calcularPromediosPorEstudiantes(todasNotas, promediosPorEstudiante)
+	Definir promedio, acomuladorNotas Como Real
+	Para filas = 1 Hasta 5 Con Paso 1 Hacer
+		Para columnas = 1 Hasta 5 Con Paso 1 Hacer
+			acomuladorNotas = acomuladorNotas + todasNotas[filas, columnas]
+		FinPara
+		
+		promedio = acomuladorNotas/5
+		promediosPorEstudiante[fila] = promedio
+		promedio = 0
+	Fin para
+FinFuncion
+
+
+Funcion promedio = calcularPromedioGeneral(todasLasNotas)
+	Definir contadorNotasTotales, acomuladorNotasTotales Como Entero
+	Para filas = 1 Hasta 5 Con Paso 1 Hacer
+		Para columnas = 1 Hasta 5 Con Paso 1 Hacer
+			contadorNotasTotales = contadorNotasTotales + 1
+			acomuladorNotasTotales = acomuladorNotasTotales + todasLasNotas[filas, columnas]
+		Fin Para
+	Fin Para
+	
+	promedio = acomuladorNotasTotales / contadorNotasTotales
+FinFuncion
+
+Funcion calcularPromedioGeneralPorRefencia(todasLasNotasPorReferencia, promedioGeneral Por Referencia)
+	Definir contadorNotasTotales, acomuladorNotasTotales Como Entero
+	Para filas = 1 Hasta 5 Con Paso 1 Hacer
+		Para columnas = 1 Hasta 5 Con Paso 1 Hacer
+			contadorNotasTotales = contadorNotasTotales + 1
+			acomuladorNotasTotales = acomuladorNotasTotales + todasLasNotasPorReferencia[filas, columnas]
+		Fin Para
+	Fin Para
+	
+	promedioGeneral = acomuladorNotasTotales / contadorNotasTotales
+FinFuncion
