@@ -1,2 +1,4 @@
 buenaaas!
 tardes!
+
+este es un ejemplo de conflito de error :(
