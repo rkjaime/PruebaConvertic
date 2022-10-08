@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 
 pull request
 buenaaas!
 tardes!
 
+=======
+buenaaas!
+tardes!
+>>>>>>> 1802f2de3f14ca2879841a51630bd98002543293
